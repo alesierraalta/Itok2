@@ -1,0 +1,44 @@
+{
+  "_comment": "Example MCP server configuration for Cursor IDE",
+  "_description": "This file shows how to configure the Itok MCP server in Cursor. Copy the relevant section to your Cursor MCP settings.",
+  
+  "mcpServers": {
+    "itok": {
+      "_description": "Itok MCP server for intelligent tokenization optimization",
+      "_note": "Choose one of the following transport methods:",
+      
+      "_option1_http": {
+        "description": "HTTP transport (recommended for development and debugging)",
+        "url": "http://localhost:3000/mcp",
+        "_note": "Requires the server to be running. Use 'npm start' or 'npm run dev' to start the server."
+      },
+      
+      "_option2_stdio": {
+        "description": "Stdio transport (for production or when running as a process)",
+        "command": "node",
+        "args": [
+          "/absolute/path/to/itok/build/server/index.js"
+        ],
+        "env": {
+          "PORT": "3000"
+        },
+        "_note": "Replace '/absolute/path/to/itok' with the actual path to your Itok project directory."
+      }
+    }
+  },
+  
+  "_instructions": [
+    "1. Open Cursor Settings",
+    "2. Navigate to Features > Model Context Protocol (or search for 'MCP')",
+    "3. Add the 'itok' server configuration using one of the options above",
+    "4. Save and restart Cursor",
+    "5. Verify connection by using the 'ping' tool in Cursor Composer Agent"
+  ],
+  
+  "_troubleshooting": {
+    "server_not_responding": "Ensure the server is running: 'npm start' or 'npm run dev'",
+    "connection_refused": "Check that the port (default 3000) matches your server configuration",
+    "tools_not_appearing": "Restart Cursor after adding the MCP configuration"
+  }
+}
+

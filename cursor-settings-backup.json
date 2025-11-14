@@ -1,0 +1,35 @@
+﻿{
+    "jupyter.askForKernelRestart":  false,
+    "security.workspace.trust.untrustedFiles":  "open",
+    "python.createEnvironment.trigger":  "off",
+    "editor.inlineSuggest.syntaxHighlightingEnabled":  true,
+    "augment.chat.userGuidelines":  "Follow these steps for each interaction:\n\n1. User Identification:\n   - You should assume that you are interacting with default_user\n   - If you have not identified default_user, proactively try to do so.\n\n2. Memory Retrieval:\n   - Always begin your chat by saying only \"Remembering...\" and retrieve all relevant information from your knowledge graph\n   - Always refer to your knowledge graph as your \"memory\"\n\n3. Memory\n   - While conversing with the user, be attentive to any new information that falls into these categories:\n     a) Basic Identity (age, gender, location, job title, education level, etc.)\n     b) Behaviors (interests, habits, etc.)\n     c) Preferences (communication style, preferred language, etc.)\n     d) Goals (goals, targets, aspirations, etc.)\n     e) Relationships (personal and professional relationships up to 3 degrees of separation)\n\n4. Memory Update:\n   - If any new information was gathered during the interaction, update your memory as follows:\n     a) Create entities for recurring organizations, people, and significant events\n     b) Connect them to the current entities using relations\n     b) Store facts about them as observations",
+    "kilo-code.allowedCommands":  [
+                                      "npm test",
+                                      "npm install",
+                                      "tsc",
+                                      "git log",
+                                      "git diff",
+                                      "git show"
+                                  ],
+    "geminicodeassist.updateChannel":  "Insiders",
+    "git.enableSmartCommit":  true,
+    "cursor.composer.usageSummaryDisplay":  "always",
+    "cursor.composer.shouldAllowCustomModes":  true,
+    "cursor.diffs.useCharacterLevelDiffs":  true,
+    "cursor.terminal.usePreviewBox":  true,
+    "cursor.composer.textSizeScale":  1.15,
+    "terminal.integrated.enableMultiLinePasteWarning":  "never",
+    "git.autofetch":  true,
+    "git.confirmSync":  false,
+    "cursor.agent_layout_browser_beta_setting":  true,
+    "update.releaseTrack":  "dev",
+    "update.mode":  "silentlyApplyOnQuit",
+    "cursor.enable_git_worktrees_setting":  true,
+    "chatgpt.cliExecutable":  "",
+    "workbench.sideBar.location":  "right",
+    "workbench.colorTheme":  "One Dark Modern",
+    "mcp.servers":  {
+
+                    }
+}
