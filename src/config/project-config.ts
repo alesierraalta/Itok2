@@ -131,16 +131,18 @@ export const PROJECT_DETECTION_PATTERNS: ProjectDetectionPattern[] = [
 
 /**
  * Get default discovery roots
- * Includes repos/ directory and current workspace (ITok)
+ * Includes repos/ directory, repostest/ directory, and current workspace (ITok)
  * 
  * @returns Array of absolute paths to discovery roots
  */
 export function getDefaultDiscoveryRoots(): string[] {
   const workspaceRoot = process.cwd();
   const reposPath = path.join(workspaceRoot, "repos");
+  const repostestPath = path.join(workspaceRoot, "repostest");
   
   return [
     reposPath,
+    repostestPath, // Test repositories for MCP testing
     workspaceRoot, // ITok project itself
   ];
 }
