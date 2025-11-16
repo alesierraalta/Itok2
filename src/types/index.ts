@@ -544,6 +544,8 @@ export interface BenchmarkScenario {
   estimatedTimeMinutes: number;
   /** Criteria for task completion */
   completionCriteria: string[];
+  /** Repository/project identifier (e.g., "itok", "pytodo", "flasktodo", "django-htmx") */
+  repository?: string;
 }
 
 /**
@@ -551,6 +553,46 @@ export interface BenchmarkScenario {
  * 
  * @interface
  */
+/**
+ * Result of a multi-repository benchmark execution.
+ * 
+ * Contains results from running the same base scenario across multiple repositories
+ * in both baseline and experimental modes.
+ * 
+ * @interface
+ */
+export interface MultiRepoBenchmarkResult {
+  /** Base scenario used for all executions */
+  baseScenario: BenchmarkScenario;
+  /** Results organized by repository */
+  results: {
+    /** Repository identifier */
+    repository: string;
+    /** Baseline execution result (if executed) */
+    baseline?: ScenarioExecution;
+    /** Experimental execution result (if executed) */
+    experimental?: ScenarioExecution;
+    /** Token reduction metrics (if both baseline and experimental exist) */
+    tokenReduction?: {
+      /** Absolute reduction in tokens */
+      absolute: number;
+      /** Percentage reduction */
+      percentage: number;
+    };
+  }[];
+  /** Overall statistics across all repositories */
+  statistics: {
+    /** Average token reduction percentage across all repositories */
+    averageTokenReduction: number;
+    /** Number of repositories tested */
+    repositoriesTested: number;
+    /** Total number of executions (baseline + experimental) */
+    totalExecutions: number;
+  };
+  /** Timestamp when benchmark was completed (ISO 8601) */
+  completedAt: string;
+}
+
 export interface ScenarioExecution {
   /** Unique identifier for this execution */
   id: string;

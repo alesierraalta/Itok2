@@ -12,6 +12,7 @@ import { handlePlanTask, planTaskInputSchema } from "../tools/plan-task.js";
 import { handleValidatePlan, validatePlanInputSchema } from "../tools/validate-plan.js";
 import { handleExecuteStep, executeStepInputSchema } from "../tools/execute-step.js";
 import { handleGetChunks, getChunksInputSchema } from "../tools/get-chunks.js";
+import { handleDiscoverProjects, discoverProjectsInputSchema } from "../tools/discover-projects.js";
 
 /**
  * Creates and configures the MCP server instance
@@ -158,6 +159,26 @@ export function createMcpServer(): McpServer {
         step: args.step,
         plan: args.plan,
         options: args.options,
+      });
+    }
+  );
+
+  // Register discover_projects tool (Phase 2)
+  server.registerTool(
+    "discover_projects",
+    {
+      description: "Discovers and registers projects in discovery roots. Scans directories recursively up to maxDepth, detects projects based on patterns (git, package.json, requirements.txt, etc.), creates .mcp_proj/ directories and project.yml files, and returns list of discovered projects.",
+      inputSchema: {
+        rootPath: z.string().optional().describe(discoverProjectsInputSchema.rootPath.description),
+        maxDepth: z.number().int().positive().optional().describe(discoverProjectsInputSchema.maxDepth.description),
+        forceReindex: z.boolean().optional().describe(discoverProjectsInputSchema.forceReindex.description),
+      },
+    },
+    async (args) => {
+      return await handleDiscoverProjects({
+        rootPath: args.rootPath,
+        maxDepth: args.maxDepth,
+        forceReindex: args.forceReindex,
       });
     }
   );
